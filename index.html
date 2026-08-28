@@ -1,15 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pêssego — Setembro Amarelo</title>
+  <meta name="description" content="Pêssego: informação, acolhimento e prevenção. Um espaço para falar sobre saúde mental e valorização da vida.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Styles/style.css">
-  <title>Pessego</title>
 </head>
 <body>
- <header>
-    <h1>Pessego</h1>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#topo" class="logo">Pêssego<span class="logo__dot">.</span></a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#protecao" class="nav__link">O que fazer</a></li>
+          <li><a href="#historias" class="nav__link">Histórias</a></li>
+          <li><a href="#participe" class="nav__link">Participe</a></li>
+        </ul>
+      </nav>
+
+      <a href="tel:188" class="btn btn--ghost header__cta"></a>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
-  
+
+  <!-- 1.hero -->
+  <section class="hero" id="topo">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <p class="hero__tag reveal" data-reveal></p>
+      <h1 class="hero__title_reveal" data-reveal>
+         <span class="highlight"></span>
+      </h1>
+      <p class="hero__subtitle_reveal" data-reveal>
+        
+      </p>
+      <div class="hero__actions reveal" data-reveal>
+        <a href="#sobre" class="btn btn--primary"></a>
+        <a href="#apoio" class="btn btn--outline"></a>
+      </div>
+    </div>
+    <a href="#sobre" class="scroll-indicator" aria-hidden="true"><span></span></a>
+  </section>
+
+
+<!-- 2. sobre -->
+  <section class="section" id="sobre">
+    <div class="container">
+      <h2 class="section__title">Sobre o Pêssego</h2>
+      <p class="section__text">[Texto explicativo sobre o Pêssego]</p>
+       
+
+  </section>
+
+
+<!-- 3. o que fazer -->
+  <section class="section" id="protecao">
+    <div class="container">
+      <h2 class="section__title">O que fazer</h2>
+      <p class="section__text">[Texto explicativo sobre o que fazer]</p>
+    </div>
+
+  </section>
+
+<!-- 4. histórias -->
+  <section class="section" id="historias">
+    <div class="container">
+      <h2 class="section__title">Histórias</h2>
+      <p class="section__text">[Texto explicativo sobre as histórias]</p>
+    </div>
+  </section>
+
+
+<!-- 5. participe -->
+  <section class="section" id="participe">
+    <div class="container">
+      <h2 class="section__title">Participe</h2>
+      <p class="section__text">[Texto explicativo sobre como participe]</p>
+    </div>
+  </section>
+
+<!-- 6. footer -->
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="logo">Pêssego<span class="logo__dot">.</span></span>
+        <p>[Texto curto sobre o propósito do site]</p>
+      </div>
+
+      <div class="footer__links">
+        <h4>Navegação</h4>
+        <a href="#sobre">Sobre</a>
+        <a href="#protecao">O que fazer</a>
+        <a href="#apoio">Rede de apoio</a>
+        <a href="#participe">Participe</a>
+      </div>
+
+      <div class="footer__contact">
+        <h4>Precisa de ajuda?</h4>
+        <a href="tel:188">Ligue: 188</a>
+        <a href="#">cvv.org.br</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>&copy; <span id="year"></span> Pêssego. [Créditos / direitos reservados].</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
