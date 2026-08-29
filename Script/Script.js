@@ -1,14 +1,8 @@
-/* =========================================================
-   PÊSSEGO — script.js
-   1) Header com efeito ao rolar
-   2) Menu hambúrguer responsivo
-   3) Scroll reveal (Intersection Observer)
-   4) Contadores animados nas estatísticas
-   ========================================================= */
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---------- 1. HEADER AO ROLAR ---------- */
+  /* 1.heder scroll */
   const header = document.getElementById('header');
   const onScrollHeader = () => {
     header.classList.toggle('scrolled', window.scrollY > 40);
@@ -16,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   onScrollHeader();
   window.addEventListener('scroll', onScrollHeader, { passive: true });
 
-  /* ---------- 2. MENU HAMBÚRGUER ---------- */
+  /* 2.menu hambúrguer */
   const hamburger = document.getElementById('hamburger');
   const nav = document.getElementById('nav');
 
@@ -28,14 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   hamburger.addEventListener('click', toggleMenu);
 
-  // Fecha o menu ao clicar em um link (mobile)
+ 
   nav.querySelectorAll('.nav__link').forEach(link => {
     link.addEventListener('click', () => {
       if (nav.classList.contains('active')) toggleMenu();
     });
   });
 
-  /* ---------- 3. SCROLL REVEAL ---------- */
+  /* -3. scroll reveal */
   const revealEls = document.querySelectorAll('[data-reveal]');
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -52,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealEls.forEach(el => revealObserver.observe(el));
 
-  /* ---------- 4. CONTADORES ANIMADOS ---------- */
+
   const counters = document.querySelectorAll('.stat__number');
 
   const animateCounter = (el) => {

@@ -195,6 +195,23 @@ body {
 }
 .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
+
+.hero__content svg {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 500px;
+  height: auto;
+  z-index: -1;
+}
+
+/* Em telas menores, evita que o pêssego atrapalhe o texto */
+@media (max-width: 900px) {
+  .hero__content svg {
+    display: none;
+  }
+}
 .scroll-indicator {
   position: absolute;
   bottom: 32px; left: 50%;
