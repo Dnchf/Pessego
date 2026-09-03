@@ -14,6 +14,7 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
   --color-yellow: #ffc93c;
   --color-yellow-dark: #f2a900;
 
+
   --color-bg: #fffaf5;
   --color-bg-alt: #fff2e4;
   --color-dark: #241b16;
@@ -21,9 +22,9 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
   --color-text: #3a2c22;
   --color-text-muted: #7a6a5c;
   --color-white: #ffffff;
-
+ 
   --gradient-hero: linear-gradient(135deg, #FFF0A8 0%, #FFD477 25%, #FFAA6B 50%,#F47C73 75%,#D95767 100%);
-
+  --gradient-btn: linear-gradient(135deg, #FFF0A8 0%, #FFAA6B 28%, #FFD477 65%, #F9936F 83%);
   --font-title: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
 
@@ -34,7 +35,7 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 
   --transition: 0.35s cubic-bezier(.4,0,.2,1);
 
-  --peach-size: clamp(360px, 26vw, 680px);
+  --peach-size: clamp(360px, 36vw, 680px);
 }
 
 /* ---------- 3. BASE ---------- */
@@ -169,7 +170,12 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-.hero__content {  padding-top: 90px; max-width: 720px; }
+.hero__content {
+  padding: 90px;
+  max-width: 720px;
+  margin-left: 5%;
+  margin-right: auto;
+}
 .hero__tag {
   display: inline-block;
   color: var(--color-yellow);
@@ -212,34 +218,8 @@ body {
   .hero__content svg {
     display: none;
   }
-}
-.scroll-indicator {
-  position: absolute;
-  bottom: 32px; left: 50%;
-  transform: translateX(-50%);
-  width: 26px; height: 42px;
-  border: 2px solid rgba(255,255,255,0.6);
-  border-radius: 20px;
-}
-.scroll-indicator span {
-  position: absolute;
-  top: 8px; left: 50%;
-  transform: translateX(-50%);
-  width: 4px; height: 8px;
-  background: var(--color-yellow);
-  border-radius: 2px;
-  animation: scrollDot 1.8s ease-in-out infinite;
-}
-@keyframes scrollDot {
-  0%   { top: 8px; opacity: 1; }
-  70%  { top: 22px; opacity: 0; }
-  100% { top: 8px; opacity: 0; }
-}
-
-/* Em telas menores, evita que o pêssego atrapalhe o texto */
-@media (max-width: 900px) {
-  .hero__content svg {
-    display: none;
+  .hero__content {
+    margin: 0 auto;
   }
 }
 .scroll-indicator {
@@ -273,13 +253,13 @@ body {
   align-items: center;
   justify-content: center;
   padding: 14px 30px;
-  border-radius: 999px;
+  border-radius: 100px;
   font-weight: 600;
   font-size: 0.95rem;
   transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
 }
 .btn--primary {
-  background: var(--color-dark);
+  background: var(--gradient-btn);
   color: var(--color-white);
   box-shadow: var(--shadow-soft);
 }
@@ -292,12 +272,12 @@ body {
 .btn--outline:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
 .header.scrolled .btn--outline { color: var(--color-dark); border-color: var(--color-dark); }
 .btn--ghost {
-  background: var(--color-yellow);
-  color: var(--color-dark);
+  background: var(--gradient-btn);
+  color: var(--color-white);
   font-size: 0.85rem;
   padding: 10px 20px;
 }
-.btn--ghost:hover { background: var(--color-yellow-dark); transform: translateY(-2px); }
+.btn--ghost:hover { background: var(--gradient-btn); transform: translateY(-2px); }
 
 /* 1c. NAV MOBILE */
 @media (max-width: 900px) {
