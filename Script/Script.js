@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
   /* 1.heder scroll */
@@ -82,5 +80,31 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- ANO NO FOOTER ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+
+  const heroEl = document.querySelector('.hero');
+  const svgDeco = document.getElementById('svgDeco');
+
+  if (heroEl && svgDeco && window.matchMedia('(pointer: fine)').matches) {
+    const MAX_SHIFT = 26; // px de deslocamento máximo
+
+    const onHeroMove = (e) => {
+      const rect = heroEl.getBoundingClientRect();
+      const relX = (e.clientX - rect.left) / rect.width;   // 0 -> 1
+      const relY = (e.clientY - rect.top) / rect.height;   // 0 -> 1
+
+      const offsetX = (relX - 0.5) * 2 * MAX_SHIFT; // -MAX_SHIFT..MAX_SHIFT
+      const offsetY = (relY - 0.5) * 2 * MAX_SHIFT;
+
+      svgDeco.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    };
+
+    const resetHeroMove = () => {
+      svgDeco.style.transform = 'translate(0px, 0px)';
+    };
+
+    heroEl.addEventListener('mousemove', onHeroMove);
+    heroEl.addEventListener('mouseleave', resetHeroMove);
+  }
 
 });
