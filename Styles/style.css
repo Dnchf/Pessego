@@ -311,6 +311,282 @@ body {
 /* 2. SOBRE A CAUSA */
 .section:nth-of-type(even) { background: var(--color-bg-alt); }
 
+.about {
+  position: relative;
+  padding: 140px 0;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+/* Pequeno detalhe decorativo */
+.about::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: var(--color-peach-light);
+  opacity: 0.18;
+  filter: blur(20px);
+  top: -180px;
+  right: -150px;
+  pointer-events: none;
+}
+
+/* ---------- CABEÇALHO ---------- */
+
+.about__header {
+  max-width: 760px;
+
+}
+
+.about__header .eyebrow {
+  margin-bottom: 12px;
+}
+
+.about__header .section__title {
+  margin: 0 0 22px;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.15;
+}
+
+.about__header .section__title span {
+  color: var(--color-yellow-dark);
+}
+
+.about__intro {
+  max-width: 680px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+
+/* ---------- CONTEÚDO ---------- */
+
+.about__content {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 90px;
+  align-items: center;
+}
+
+
+/* ---------- TEXTO ---------- */
+
+.about__text {
+  max-width: 470px;
+}
+
+.about__text p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+.about__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+
+  font-weight: 700;
+  color: var(--color-dark);
+
+  transition:
+    gap var(--transition),
+    color var(--transition);
+}
+
+.about__link span {
+  font-size: 1.4rem;
+  color: var(--color-yellow-dark);
+}
+
+.about__link:hover {
+  gap: 16px;
+  color: var(--color-yellow-dark);
+}
+
+
+/* ---------- ILUSTRAÇÕES ---------- */
+
+.about__illustrations {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* ---------- CARDS ---------- */
+
+.about__card {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+
+  min-height: 175px;
+  padding: 24px 30px;
+
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(58, 44, 34, 0.06);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.about__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-strong);
+}
+
+
+/* ---------- ÍCONE ---------- */
+
+.about__icon {
+  width: 120px;
+  height: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 24px;
+
+  background: var(--color-bg-alt);
+}
+
+.about__icon img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+
+  transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+}
+
+.about__card:hover .about__icon img {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+
+/* ---------- TEXTOS DOS CARDS ---------- */
+
+.about__card h3 {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-dark);
+
+  margin-bottom: 7px;
+}
+
+.about__card p {
+  max-width: 390px;
+
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .about {
+    padding: 100px 0;
+  }
+
+  .about__content {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .about__text {
+    max-width: 700px;
+  }
+
+  .about__header {
+    margin-bottom: 50px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .about {
+    padding: 80px 0;
+  }
+
+  .about__card {
+    grid-template-columns: 90px 1fr;
+    gap: 18px;
+
+    padding: 20px;
+    min-height: 140px;
+  }
+
+  .about__icon {
+    width: 78px;
+    height: 78px;
+    border-radius: 18px;
+  }
+
+  .about__icon img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .about__card h3 {
+    font-size: 1rem;
+  }
+
+  .about__card p {
+    font-size: 0.85rem;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 /* 3. FOOTER */
 .footer {
   background: var(--color-dark);
