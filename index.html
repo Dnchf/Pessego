@@ -2,386 +2,760 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pêssego — Setembro Amarelo</title>
-  <meta name="description"
-    content="Pêssego: informação, acolhimento e prevenção. Um espaço para falar sobre saúde mental e valorização da vida.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./Styles/Style.css">
-  <script>
-    (function () {
-      try {
-        var stored = localStorage.getItem('pessego-theme');
-        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', theme);
-      } catch (e) {}
-    })();
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Aplica o tema antes do CSS e da primeira pintura da página. -->
+    <script>
+        (() => {
+            let savedTheme = null;
+            try { savedTheme = localStorage.getItem('pessego-theme'); } catch (_) { }
+            const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = savedTheme === 'light' || savedTheme === 'dark'
+                ? savedTheme : (systemDark ? 'dark' : 'light');
+        })();
+    </script>
+    <title>Pêssego — Setembro Amarelo</title>
+    <link rel="icon" type="image/svg+xml" href="./Styles/Assents/pessego.svg">
+    <meta name="description"
+        content="Pêssego: informação, acolhimento e prevenção. Um espaço para falar sobre saúde mental e valorização da vida.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./Styles/style.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- ===== HEADER / NAV ===== -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="#topo" class="logo">Pêssego 🍑<span class="logo__dot">.</span></a>
+    <!-- ===== HEADER / NAV ===== -->
+    <header class="header" id="header">
+        <div class="container header__inner">
+            <a href="#topo" class="logo">Pêssego 🍑<span class="logo__dot">.</span></a>
 
-      <nav class="nav" id="nav">
-        <ul class="nav__list">
-          <li><a href="#sobre" class="nav__link">Sobre</a></li>
-          <li><a href="#protecao" class="nav__link">O que fazer</a></li>
-          <li><a href="#historias" class="nav__link">Histórias</a></li>
-          <li><a href="#participe" class="nav__link">Participe</a></li>
-        </ul>
-      </nav>
+            <nav class="nav" id="nav" aria-label="Navegação principal">
+                <ul class="nav__list">
+                    <li><a href="#sobre" class="nav__link">Sobre</a></li>
+                    <li><a href="#protecao" class="nav__link">O que fazer</a></li>
+                    <li><a href="#historias" class="nav__link">Histórias</a></li>
+                    <li><a href="#participe" class="nav__link">Participe</a></li>
+                </ul>
+            </nav>
 
-      <a href="tel:188" class="btn btn--ghost header__cta">Precisa de ajuda? Ligue 188</a>
-
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar modo escuro" aria-pressed="false">
-        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4"></circle>
-          <line x1="12" y1="2" x2="12" y2="4"></line>
-          <line x1="12" y1="20" x2="12" y2="22"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="2" y1="12" x2="4" y2="12"></line>
-          <line x1="20" y1="12" x2="22" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-
-      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- 1.hero -->
-  <section class="hero" id="topo">
-    <div class="hero__bg" aria-hidden="true"></div>
-    <div class="container hero__content">
-
-      <p class="hero__tag reveal" data-reveal>Setembro Amarelo</p>
-      <h1 class="hero__title_reveal" data-reveal>
-        Falar é o primeiro passo para <span class="highlight">salvar vidas</span>
-      </h1>
-      <p class="hero__subtitle_reveal" data-reveal>
-        O Pêssego é um espaço de acolhimento, informação e prevenção. Aqui você encontra histórias reais, orientações
-        práticas e uma rede de apoio para cuidar da sua saúde mental e da de quem você ama.
-      </p>
-      <svg id="svgDeco" class="svg-deco" width="1668" height="1364" viewBox="0 0 1668 1364" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g filter="url(#filter0_d_0_1)">
-          <path
-            d="M1082.87 413.624C1082.87 413.624 1136.1 371.514 1165.68 341.4C1202.11 304.309 1212.98 265.433 1200.28 260.839C1187.57 256.245 1138.36 265.433 1138.36 265.433L990.95 338.592L953.598 395.079L1082.87 413.624Z"
-            fill="url(#paint0_linear_0_1)" />
-          <path
-            d="M467.681 394.142C467.681 394.142 436.763 382.998 402.168 345.057C368.408 307.967 358.464 282.957 363.06 269.09C367.573 255.224 535.952 306.181 535.952 306.181L647.926 357.137L677.006 418.302L467.681 394.142Z"
-            fill="url(#paint1_linear_0_1)" />
-          <path
-            d="M1092.9 253.352C1184.82 249.694 1200.28 260.754 1200.28 260.754C1200.28 260.754 1131.09 294.101 1064.65 325.577C998.304 357.013 944.624 398.632 944.49 398.736L841.57 478.088C828.669 468.467 819.612 463.478 817.417 462.477C806.534 457.598 790.741 457.598 802.852 471.079C805.178 473.669 812.029 481.374 821.451 493.6L802.601 508.135L609.653 361.731C609.497 361.652 542.238 327.423 486.816 306.18C431.331 284.913 363.06 269.09 363.06 269.09C363.06 269.09 376.513 251.566 503.194 257.946C630.628 264.411 677.924 296.824 716.112 320.047C754.301 343.271 790.734 396.95 790.734 396.95C790.734 396.95 826.248 324.726 883.572 294.101C940.896 263.476 1000.98 257.01 1092.9 253.352Z"
-            fill="url(#paint2_linear_0_1)" />
-        </g>
-        <g filter="url(#filter1_d_0_1)" class="svg-peach">
-          <path
-            d="M799.518 437.896C820.408 436.024 866.201 371.372 991.294 381.665C1116.39 391.873 1307.24 536.492 1255.85 807.693C1227.94 955.203 1152.57 1050.31 1013.27 1153.41C914.834 1226.23 814.643 1272.51 768.349 1273.19C726.651 1273.87 669.159 1180.98 669.159 1180.98L799.518 437.896ZM817.417 462.477C806.534 457.598 790.741 457.599 802.852 471.079C814.962 484.559 949.653 636.567 931.405 843.819C915.121 1029.24 842.867 1171.16 817.336 1203.08C791.969 1234.92 776.258 1248.65 786.486 1251.62C790.007 1252.62 823.965 1236.08 845.321 1209.2C902.684 1136.83 975.511 1036.27 988.44 849.939C1007.83 570.405 828.3 467.44 817.417 462.477Z"
-            fill="url(#paint3_linear_0_1)" />
-        </g>
-        <g filter="url(#filter2_d_0_1)">
-          <path
-            d="M354.418 481.153C465.64 376.433 575.191 361.205 668.113 381.452C761.034 401.699 789.279 433.854 807.579 449.082C811.236 452.125 817.276 458.406 824.6 466.509C820.93 464.264 818.435 462.942 817.417 462.477C806.533 457.598 790.741 457.599 802.851 471.079C814.962 484.559 949.653 636.567 931.405 843.819C915.121 1029.24 842.866 1171.16 817.336 1203.08C791.969 1234.92 776.257 1248.65 786.486 1251.62C789.328 1252.42 811.993 1241.8 831.861 1223.55L802.565 1260.05C802.526 1260.07 783.58 1272.13 767.385 1272.89C751.091 1273.57 629.924 1238.1 522.045 1163.75C414.165 1089.4 328.513 1000.33 291.328 900.205C244.867 775.153 243.196 585.874 354.418 481.153Z"
-            fill="url(#paint4_linear_0_1)" />
-        </g>
-        <path
-          d="M796.5 0L807.809 28.6752C808.853 31.3222 809.375 32.6457 810.174 33.7617C810.883 34.7509 811.749 35.617 812.738 36.3255C813.854 37.1247 815.178 37.6467 817.825 38.6907L846.5 50L817.825 61.3094C815.178 62.3533 813.854 62.875 812.738 63.6744C811.749 64.3828 810.883 65.2489 810.174 66.2383C809.375 67.3544 808.853 68.6778 807.809 71.325L796.5 100L785.191 71.325C784.147 68.6778 783.625 67.3544 782.826 66.2383C782.117 65.2489 781.251 64.3828 780.262 63.6744C779.146 62.875 777.822 62.3533 775.175 61.3094L746.5 50L775.175 38.6907C777.822 37.6467 779.146 37.1247 780.262 36.3255C781.251 35.617 782.117 34.7509 782.826 33.7617C783.625 32.6457 784.147 31.3222 785.191 28.6752L796.5 0Z"
-          fill="url(#paint5_linear_0_1)" />
-        <path
-          d="M55.5 533L63.4456 562.51C64.415 566.111 64.9 567.912 65.8567 569.384C66.7033 570.686 67.8139 571.796 69.1167 572.643C70.5883 573.6 72.3889 574.085 75.99 575.054L105.5 583L75.99 590.946C72.3889 591.915 70.5883 592.4 69.1167 593.357C67.8139 594.203 66.7033 595.314 65.8567 596.617C64.9 598.088 64.415 599.889 63.4456 603.49L55.5 633L47.5544 603.49C46.585 599.889 46.1 598.088 45.1433 596.617C44.2964 595.314 43.1861 594.203 41.8836 593.357C40.4116 592.4 38.6111 591.915 35.0101 590.946L5.5 583L35.0101 575.054C38.6111 574.085 40.4116 573.6 41.8836 572.643C43.1861 571.796 44.2964 570.686 45.1433 569.384C46.1 567.912 46.585 566.111 47.5544 562.51L55.5 533Z"
-          fill="#FFD477" stroke="#FFD477" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
-        <path
-          d="M1627.5 700L1633.06 720.657C1633.74 723.178 1634.08 724.438 1634.75 725.469C1635.34 726.38 1636.12 727.158 1637.03 727.75C1638.06 728.42 1639.32 728.76 1641.84 729.438L1662.5 735L1641.84 740.562C1639.32 741.24 1638.06 741.58 1637.03 742.25C1636.12 742.842 1635.34 743.62 1634.75 744.532C1634.08 745.562 1633.74 746.822 1633.06 749.343L1627.5 770L1621.94 749.343C1621.26 746.822 1620.92 745.562 1620.25 744.532C1619.66 743.62 1618.88 742.842 1617.97 742.25C1616.94 741.58 1615.68 741.24 1613.16 740.562L1592.5 735L1613.16 729.438C1615.68 728.76 1616.94 728.42 1617.97 727.75C1618.88 727.158 1619.66 726.38 1620.25 725.469C1620.92 724.438 1621.26 723.178 1621.94 720.657L1627.5 700Z"
-          fill="#FFC300" stroke="#FFC300" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
-        <path
-          d="M514.532 1013.38C518.413 1021.43 520.166 1030.39 519.599 1039.3C519.033 1048.22 516.16 1056.89 511.292 1064.37L470.824 1126.63L427.324 1070.05L479.031 1002.79C480.223 1001.24 481.326 999.629 482.341 997.964C482.39 997.896 482.433 997.825 482.47 997.751C487.623 989.209 490.416 979.306 490.416 969.295C490.416 967.031 490.272 964.764 489.99 962.513L514.532 1013.38ZM368.647 946.685C372.249 939.218 378.529 932.885 386.81 928.371C396.999 922.816 410.016 920 425.5 920C440.985 920 454.002 922.816 464.191 928.371C472.471 932.885 478.752 939.218 482.354 946.685L482.359 946.696C485.738 953.702 487.524 961.516 487.524 969.295C487.524 978.151 485.217 986.92 480.936 994.631C478.901 992.413 474.61 988.195 468.008 983.949C459.371 978.394 444.984 971.771 425.5 971.771C406.016 971.771 391.63 978.394 382.992 983.949C376.39 988.195 372.1 992.413 370.064 994.631C365.783 986.92 363.477 978.151 363.477 969.295C363.477 961.513 365.265 953.695 368.647 946.685ZM354.435 1305.67L313.5 1218.1L379.979 1131.63L423.776 1199L354.435 1305.67ZM496.565 1305.67L426.712 1198.21L426.701 1198.2C426.7 1198.19 426.698 1198.19 426.696 1198.19L339.709 1064.37C334.84 1056.89 331.968 1048.22 331.401 1039.3C330.835 1030.39 332.587 1021.43 336.469 1013.38L361.011 962.513C360.728 964.764 360.585 967.031 360.585 969.295C360.585 979.308 363.379 989.213 368.534 997.756C368.569 997.826 368.61 997.894 368.656 997.959C369.672 999.626 370.776 1001.24 371.969 1002.79L424.353 1070.93L469.776 1130.01L537.5 1218.1L496.565 1305.67Z"
-          fill="url(#paint6_linear_0_1)" />
-        <circle cx="449.5" cy="100" r="16" fill="url(#paint7_linear_0_1)" />
-        <circle cx="1158" cy="1341.5" r="22.5" fill="url(#paint8_linear_0_1)" />
-        <circle cx="1338.5" cy="242" r="10" fill="url(#paint9_linear_0_1)" />
-        <circle cx="139.5" cy="1300" r="10" fill="url(#paint10_linear_0_1)" />
-        <defs>
-          <filter id="filter0_d_0_1" x="322.005" y="234.61" width="923.366" height="335.525"
-            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha" />
-            <feOffset dy="22" />
-            <feGaussianBlur stdDeviation="20" />
-            <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
-          </filter>
-          <filter id="filter1_d_0_1" x="629.159" y="362.555" width="675.282" height="972.642"
-            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha" />
-            <feOffset dy="22" />
-            <feGaussianBlur stdDeviation="20" />
-            <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
-          </filter>
-          <filter id="filter2_d_0_1" x="221.432" y="355.751" width="751.67" height="979.153"
-            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha" />
-            <feOffset dy="22" />
-            <feGaussianBlur stdDeviation="20" />
-            <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
-          </filter>
-          <linearGradient id="paint0_linear_0_1" x1="1079.48" y1="259.553" x2="1079.48" y2="413.624"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFF0A8" />
-            <stop offset="0.278846" stop-color="#FFAA6B" />
-            <stop offset="0.653846" stop-color="#FFD477" />
-            <stop offset="0.826923" stop-color="#FA936F" />
-          </linearGradient>
-          <linearGradient id="paint1_linear_0_1" x1="519.505" y1="266.699" x2="519.505" y2="418.302"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFF0A8" />
-            <stop offset="0.278846" stop-color="#FFAA6B" />
-            <stop offset="0.653846" stop-color="#FFD477" />
-            <stop offset="0.826923" stop-color="#FA936F" />
-          </linearGradient>
-          <linearGradient id="paint2_linear_0_1" x1="781.668" y1="252.61" x2="781.668" y2="508.135"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFF0A8" />
-            <stop offset="0.278846" stop-color="#FFAA6B" />
-            <stop offset="0.653846" stop-color="#FFD477" />
-            <stop offset="0.826923" stop-color="#FA936F" />
-          </linearGradient>
-          <linearGradient id="paint3_linear_0_1" x1="966.8" y1="380.555" x2="966.8" y2="1273.2"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFF0A8" />
-            <stop offset="0.278846" stop-color="#FFAA6B" />
-            <stop offset="0.653846" stop-color="#FFD477" />
-            <stop offset="0.826923" stop-color="#FA936F" />
-          </linearGradient>
-          <linearGradient id="paint4_linear_0_1" x1="597.267" y1="373.751" x2="597.267" y2="1272.9"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFF0A8" />
-            <stop offset="0.278846" stop-color="#FFAA6B" />
-            <stop offset="0.653846" stop-color="#FFD477" />
-            <stop offset="0.826923" stop-color="#FA936F" />
-          </linearGradient>
-          <linearGradient id="paint5_linear_0_1" x1="846.5" y1="50" x2="746.5" y2="50" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFD477" />
-            <stop offset="1" stop-color="#FFF0A8" />
-          </linearGradient>
-          <linearGradient id="paint6_linear_0_1" x1="425.5" y1="1305.67" x2="425.5" y2="920"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFC300" />
-            <stop offset="1" stop-color="#FFEBA9" />
-          </linearGradient>
-          <linearGradient id="paint7_linear_0_1" x1="465.5" y1="100" x2="433.5" y2="100" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFF0A8" />
-            <stop offset="1" stop-color="#FFD477" />
-          </linearGradient>
-          <linearGradient id="paint8_linear_0_1" x1="1180.5" y1="1341.5" x2="1135.5" y2="1341.5"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFE568" />
-            <stop offset="1" stop-color="#FFC443" />
-          </linearGradient>
-          <linearGradient id="paint9_linear_0_1" x1="1348.5" y1="242" x2="1328.5" y2="242"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFE568" />
-            <stop offset="1" stop-color="#FFC443" />
-          </linearGradient>
-          <linearGradient id="paint10_linear_0_1" x1="149.5" y1="1300" x2="129.5" y2="1300"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FFE568" />
-            <stop offset="1" stop-color="#FFC443" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-
-
-
-      <div class="hero__actions reveal" data-reveal>
-        <a href="#sobre" class="btn btn--primary">Conheça o projeto</a>
-        <a href="#participe" class="btn btn--outline">Quero participar</a>
-      </div>
-    </div>
-    <a href="#sobre" class="scroll-indicator" aria-hidden="true"><span></span></a>
-  </section>
-
-
-  <!-- 2. SOBRE -->
-  <section class="section" id="sobre">
-    <div class="container">
-
-      <div class="about__header">
-        <span class="eyebrow">Sobre o projeto</span>
-
-        <h2 class="section__title">
-          Um espaço para <span>falar, ouvir e acolher.</span>
-        </h2>
-
-        <p class="about__intro">
-          O Pêssego nasceu para dar continuidade, o ano inteiro, à conversa
-          que o Setembro Amarelo começa: falar abertamente sobre saúde mental
-          e valorização da vida.
-        </p>
-      </div>
-
-      <div class="about__content">
-
-        <!-- TEXTO -->
-        <div class="about__text">
-
-          <p>
-            Acreditamos que falar sobre o que sentimos pode ser o primeiro
-            passo para transformar um momento difícil. Por isso, o Pêssego
-            reúne informação, acolhimento e caminhos para buscar ajuda.
-          </p>
-
-          <p>
-            Nosso objetivo é tornar a conversa sobre saúde mental mais
-            acessível, humana e presente no dia a dia — não apenas durante
-            o mês de setembro.
-          </p>
-
-          <a href="#protecao" class="about__link">
-            Saiba como ajudar
-            <span>→</span>
-          </a>
-
+            <div class="header__actions">
+                <a href="tel:188" class="btn btn--ghost header__cta">Precisa de ajuda? Ligue 188</a>
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Modo escuro"
+                    aria-pressed="false" title="Ativar modo escuro" hidden>
+                    <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"
+                        focusable="false">
+                        <circle cx="12" cy="12" r="4" />
+                        <path
+                            d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true" focusable="false">
+                        <path d="M20.9 13.4A9 9 0 0 1 10.6 3.1 9 9 0 1 0 20.9 13.4Z" />
+                    </svg>
+                </button>
+                <button class="hamburger" id="hamburger" type="button" aria-label="Abrir menu" aria-controls="nav"
+                    aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
+    </header>
+    <div class="menu-scrim" aria-hidden="true"></div>
 
-        <!-- ILUSTRAÇÕES -->
-        <div class="about__illustrations">
+    <main id="conteudo" tabindex="-1">
+        <!-- 1.hero -->
+        <section class="hero" id="topo">
+            <div class="hero__bg" aria-hidden="true"></div>
+            <div class="container hero__content">
 
-          <div class="about__card about__card--heart">
-            <div class="about__icon">
-              <img src="./Styles/Assents/heart.svg" alt="">
+                <p class="hero__tag reveal" data-reveal>Setembro Amarelo</p>
+                <h1 class="hero__title_reveal" data-reveal>
+                    Falar é o primeiro passo para <span class="highlight">salvar vidas</span>
+                </h1>
+                <p class="hero__subtitle_reveal" data-reveal>
+                    O Pêssego é um espaço de acolhimento, informação e prevenção. Encontre caminhos para cuidar da sua
+                    saúde
+                    mental e de quem você ama, com um olhar especial para o pós-parto.
+                </p>
+                <svg class="hero__illustration" width="1668" height="1364" viewBox="0 0 1668 1364" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <g filter="url(#filter0_d_0_1)">
+                        <path
+                            d="M1082.87 413.624C1082.87 413.624 1136.1 371.514 1165.68 341.4C1202.11 304.309 1212.98 265.433 1200.28 260.839C1187.57 256.245 1138.36 265.433 1138.36 265.433L990.95 338.592L953.598 395.079L1082.87 413.624Z"
+                            fill="url(#paint0_linear_0_1)" />
+                        <path
+                            d="M467.681 394.142C467.681 394.142 436.763 382.998 402.168 345.057C368.408 307.967 358.464 282.957 363.06 269.09C367.573 255.224 535.952 306.181 535.952 306.181L647.926 357.137L677.006 418.302L467.681 394.142Z"
+                            fill="url(#paint1_linear_0_1)" />
+                        <path
+                            d="M1092.9 253.352C1184.82 249.694 1200.28 260.754 1200.28 260.754C1200.28 260.754 1131.09 294.101 1064.65 325.577C998.304 357.013 944.624 398.632 944.49 398.736L841.57 478.088C828.669 468.467 819.612 463.478 817.417 462.477C806.534 457.598 790.741 457.598 802.852 471.079C805.178 473.669 812.029 481.374 821.451 493.6L802.601 508.135L609.653 361.731C609.497 361.652 542.238 327.423 486.816 306.18C431.331 284.913 363.06 269.09 363.06 269.09C363.06 269.09 376.513 251.566 503.194 257.946C630.628 264.411 677.924 296.824 716.112 320.047C754.301 343.271 790.734 396.95 790.734 396.95C790.734 396.95 826.248 324.726 883.572 294.101C940.896 263.476 1000.98 257.01 1092.9 253.352Z"
+                            fill="url(#paint2_linear_0_1)" />
+                    </g>
+                    <g filter="url(#filter1_d_0_1)">
+                        <path
+                            d="M799.518 437.896C820.408 436.024 866.201 371.372 991.294 381.665C1116.39 391.873 1307.24 536.492 1255.85 807.693C1227.94 955.203 1152.57 1050.31 1013.27 1153.41C914.834 1226.23 814.643 1272.51 768.349 1273.19C726.651 1273.87 669.159 1180.98 669.159 1180.98L799.518 437.896ZM817.417 462.477C806.534 457.598 790.741 457.599 802.852 471.079C814.962 484.559 949.653 636.567 931.405 843.819C915.121 1029.24 842.867 1171.16 817.336 1203.08C791.969 1234.92 776.258 1248.65 786.486 1251.62C790.007 1252.62 823.965 1236.08 845.321 1209.2C902.684 1136.83 975.511 1036.27 988.44 849.939C1007.83 570.405 828.3 467.44 817.417 462.477Z"
+                            fill="url(#paint3_linear_0_1)" />
+                    </g>
+                    <g filter="url(#filter2_d_0_1)">
+                        <path
+                            d="M354.418 481.153C465.64 376.433 575.191 361.205 668.113 381.452C761.034 401.699 789.279 433.854 807.579 449.082C811.236 452.125 817.276 458.406 824.6 466.509C820.93 464.264 818.435 462.942 817.417 462.477C806.533 457.598 790.741 457.599 802.851 471.079C814.962 484.559 949.653 636.567 931.405 843.819C915.121 1029.24 842.866 1171.16 817.336 1203.08C791.969 1234.92 776.257 1248.65 786.486 1251.62C789.328 1252.42 811.993 1241.8 831.861 1223.55L802.565 1260.05C802.526 1260.07 783.58 1272.13 767.385 1272.89C751.091 1273.57 629.924 1238.1 522.045 1163.75C414.165 1089.4 328.513 1000.33 291.328 900.205C244.867 775.153 243.196 585.874 354.418 481.153Z"
+                            fill="url(#paint4_linear_0_1)" />
+                    </g>
+                    <path
+                        d="M796.5 0L807.809 28.6752C808.853 31.3222 809.375 32.6457 810.174 33.7617C810.883 34.7509 811.749 35.617 812.738 36.3255C813.854 37.1247 815.178 37.6467 817.825 38.6907L846.5 50L817.825 61.3094C815.178 62.3533 813.854 62.875 812.738 63.6744C811.749 64.3828 810.883 65.2489 810.174 66.2383C809.375 67.3544 808.853 68.6778 807.809 71.325L796.5 100L785.191 71.325C784.147 68.6778 783.625 67.3544 782.826 66.2383C782.117 65.2489 781.251 64.3828 780.262 63.6744C779.146 62.875 777.822 62.3533 775.175 61.3094L746.5 50L775.175 38.6907C777.822 37.6467 779.146 37.1247 780.262 36.3255C781.251 35.617 782.117 34.7509 782.826 33.7617C783.625 32.6457 784.147 31.3222 785.191 28.6752L796.5 0Z"
+                        fill="url(#paint5_linear_0_1)" />
+                    <path
+                        d="M55.5 533L63.4456 562.51C64.415 566.111 64.9 567.912 65.8567 569.384C66.7033 570.686 67.8139 571.796 69.1167 572.643C70.5883 573.6 72.3889 574.085 75.99 575.054L105.5 583L75.99 590.946C72.3889 591.915 70.5883 592.4 69.1167 593.357C67.8139 594.203 66.7033 595.314 65.8567 596.617C64.9 598.088 64.415 599.889 63.4456 603.49L55.5 633L47.5544 603.49C46.585 599.889 46.1 598.088 45.1433 596.617C44.2964 595.314 43.1861 594.203 41.8836 593.357C40.4116 592.4 38.6111 591.915 35.0101 590.946L5.5 583L35.0101 575.054C38.6111 574.085 40.4116 573.6 41.8836 572.643C43.1861 571.796 44.2964 570.686 45.1433 569.384C46.1 567.912 46.585 566.111 47.5544 562.51L55.5 533Z"
+                        fill="#FFD477" stroke="#FFD477" stroke-width="11" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M1627.5 700L1633.06 720.657C1633.74 723.178 1634.08 724.438 1634.75 725.469C1635.34 726.38 1636.12 727.158 1637.03 727.75C1638.06 728.42 1639.32 728.76 1641.84 729.438L1662.5 735L1641.84 740.562C1639.32 741.24 1638.06 741.58 1637.03 742.25C1636.12 742.842 1635.34 743.62 1634.75 744.532C1634.08 745.562 1633.74 746.822 1633.06 749.343L1627.5 770L1621.94 749.343C1621.26 746.822 1620.92 745.562 1620.25 744.532C1619.66 743.62 1618.88 742.842 1617.97 742.25C1616.94 741.58 1615.68 741.24 1613.16 740.562L1592.5 735L1613.16 729.438C1615.68 728.76 1616.94 728.42 1617.97 727.75C1618.88 727.158 1619.66 726.38 1620.25 725.469C1620.92 724.438 1621.26 723.178 1621.94 720.657L1627.5 700Z"
+                        fill="#FFC300" stroke="#FFC300" stroke-width="11" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M514.532 1013.38C518.413 1021.43 520.166 1030.39 519.599 1039.3C519.033 1048.22 516.16 1056.89 511.292 1064.37L470.824 1126.63L427.324 1070.05L479.031 1002.79C480.223 1001.24 481.326 999.629 482.341 997.964C482.39 997.896 482.433 997.825 482.47 997.751C487.623 989.209 490.416 979.306 490.416 969.295C490.416 967.031 490.272 964.764 489.99 962.513L514.532 1013.38ZM368.647 946.685C372.249 939.218 378.529 932.885 386.81 928.371C396.999 922.816 410.016 920 425.5 920C440.985 920 454.002 922.816 464.191 928.371C472.471 932.885 478.752 939.218 482.354 946.685L482.359 946.696C485.738 953.702 487.524 961.516 487.524 969.295C487.524 978.151 485.217 986.92 480.936 994.631C478.901 992.413 474.61 988.195 468.008 983.949C459.371 978.394 444.984 971.771 425.5 971.771C406.016 971.771 391.63 978.394 382.992 983.949C376.39 988.195 372.1 992.413 370.064 994.631C365.783 986.92 363.477 978.151 363.477 969.295C363.477 961.513 365.265 953.695 368.647 946.685ZM354.435 1305.67L313.5 1218.1L379.979 1131.63L423.776 1199L354.435 1305.67ZM496.565 1305.67L426.712 1198.21L426.701 1198.2C426.7 1198.19 426.698 1198.19 426.696 1198.19L339.709 1064.37C334.84 1056.89 331.968 1048.22 331.401 1039.3C330.835 1030.39 332.587 1021.43 336.469 1013.38L361.011 962.513C360.728 964.764 360.585 967.031 360.585 969.295C360.585 979.308 363.379 989.213 368.534 997.756C368.569 997.826 368.61 997.894 368.656 997.959C369.672 999.626 370.776 1001.24 371.969 1002.79L424.353 1070.93L469.776 1130.01L537.5 1218.1L496.565 1305.67Z"
+                        fill="url(#paint6_linear_0_1)" />
+                    <circle cx="449.5" cy="100" r="16" fill="url(#paint7_linear_0_1)" />
+                    <circle cx="1158" cy="1341.5" r="22.5" fill="url(#paint8_linear_0_1)" />
+                    <circle cx="1338.5" cy="242" r="10" fill="url(#paint9_linear_0_1)" />
+                    <circle cx="139.5" cy="1300" r="10" fill="url(#paint10_linear_0_1)" />
+                    <defs>
+                        <filter id="filter0_d_0_1" x="322.005" y="234.61" width="923.366" height="335.525"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="22" />
+                            <feGaussianBlur stdDeviation="20" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
+                        </filter>
+                        <filter id="filter1_d_0_1" x="629.159" y="362.555" width="675.282" height="972.642"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="22" />
+                            <feGaussianBlur stdDeviation="20" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
+                        </filter>
+                        <filter id="filter2_d_0_1" x="221.432" y="355.751" width="751.67" height="979.153"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="22" />
+                            <feGaussianBlur stdDeviation="20" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
+                        </filter>
+                        <linearGradient id="paint0_linear_0_1" x1="1079.48" y1="259.553" x2="1079.48" y2="413.624"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFF0A8" />
+                            <stop offset="0.278846" stop-color="#FFAA6B" />
+                            <stop offset="0.653846" stop-color="#FFD477" />
+                            <stop offset="0.826923" stop-color="#FA936F" />
+                        </linearGradient>
+                        <linearGradient id="paint1_linear_0_1" x1="519.505" y1="266.699" x2="519.505" y2="418.302"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFF0A8" />
+                            <stop offset="0.278846" stop-color="#FFAA6B" />
+                            <stop offset="0.653846" stop-color="#FFD477" />
+                            <stop offset="0.826923" stop-color="#FA936F" />
+                        </linearGradient>
+                        <linearGradient id="paint2_linear_0_1" x1="781.668" y1="252.61" x2="781.668" y2="508.135"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFF0A8" />
+                            <stop offset="0.278846" stop-color="#FFAA6B" />
+                            <stop offset="0.653846" stop-color="#FFD477" />
+                            <stop offset="0.826923" stop-color="#FA936F" />
+                        </linearGradient>
+                        <linearGradient id="paint3_linear_0_1" x1="966.8" y1="380.555" x2="966.8" y2="1273.2"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFF0A8" />
+                            <stop offset="0.278846" stop-color="#FFAA6B" />
+                            <stop offset="0.653846" stop-color="#FFD477" />
+                            <stop offset="0.826923" stop-color="#FA936F" />
+                        </linearGradient>
+                        <linearGradient id="paint4_linear_0_1" x1="597.267" y1="373.751" x2="597.267" y2="1272.9"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFF0A8" />
+                            <stop offset="0.278846" stop-color="#FFAA6B" />
+                            <stop offset="0.653846" stop-color="#FFD477" />
+                            <stop offset="0.826923" stop-color="#FA936F" />
+                        </linearGradient>
+                        <linearGradient id="paint5_linear_0_1" x1="846.5" y1="50" x2="746.5" y2="50"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFD477" />
+                            <stop offset="1" stop-color="#FFF0A8" />
+                        </linearGradient>
+                        <linearGradient id="paint6_linear_0_1" x1="425.5" y1="1305.67" x2="425.5" y2="920"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFC300" />
+                            <stop offset="1" stop-color="#FFEBA9" />
+                        </linearGradient>
+                        <linearGradient id="paint7_linear_0_1" x1="465.5" y1="100" x2="433.5" y2="100"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFF0A8" />
+                            <stop offset="1" stop-color="#FFD477" />
+                        </linearGradient>
+                        <linearGradient id="paint8_linear_0_1" x1="1180.5" y1="1341.5" x2="1135.5" y2="1341.5"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFE568" />
+                            <stop offset="1" stop-color="#FFC443" />
+                        </linearGradient>
+                        <linearGradient id="paint9_linear_0_1" x1="1348.5" y1="242" x2="1328.5" y2="242"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFE568" />
+                            <stop offset="1" stop-color="#FFC443" />
+                        </linearGradient>
+                        <linearGradient id="paint10_linear_0_1" x1="149.5" y1="1300" x2="129.5" y2="1300"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFE568" />
+                            <stop offset="1" stop-color="#FFC443" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+
+
+
+                <div class="hero__actions reveal" data-reveal>
+                    <a href="#sobre" class="btn btn--primary">Conheça o projeto</a>
+                    <a href="#participe" class="btn btn--outline">Quero participar</a>
+                </div>
+            </div>
+            <a href="#sobre" class="scroll-indicator" aria-label="Ir para Sobre o projeto"><span></span></a>
+        </section>
+
+
+        <!-- 2. SOBRE -->
+        <section class="section about" id="sobre">
+            <div class="container">
+
+                <div class="about__header">
+                    <span class="eyebrow">Sobre o projeto</span>
+
+                    <h2 class="section__title">
+                        Um espaço para <span>falar, ouvir e acolher.</span>
+                    </h2>
+
+                    <p class="about__intro">
+                        O Pêssego nasceu para dar continuidade, o ano inteiro, à conversa
+                        que o Setembro Amarelo começa: falar abertamente sobre saúde mental
+                        e valorização da vida.
+                    </p>
+                </div>
+
+                <div class="about__content">
+
+                    <!-- TEXTO -->
+                    <div class="about__text">
+
+                        <p>
+                            Acreditamos que falar sobre o que sentimos pode ser o primeiro
+                            passo para transformar um momento difícil. Por isso, o Pêssego
+                            reúne informação, acolhimento e caminhos para buscar ajuda.
+                        </p>
+
+                        <p>
+                            Nosso objetivo é tornar a conversa sobre saúde mental mais
+                            acessível, humana e presente no dia a dia — não apenas durante
+                            o mês de setembro.
+                        </p>
+
+                        <a href="#protecao" class="about__link">
+                            Saiba como ajudar
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                    <!-- ILUSTRAÇÕES -->
+                    <div class="about__illustrations">
+
+                        <div class="about__card about__card--heart">
+                            <div class="about__icon">
+                                <svg aria-hidden="true" focusable="false" width="700" height="612" viewBox="0 0 700 612"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M54.3655 316.607L350 612L645.636 316.607C680.444 281.826 700 234.652 700 185.464V177.145C700 79.3108 620.624 0 522.712 0C468.851 0 417.914 24.4621 384.27 66.4833L350 109.286L315.73 66.4833C282.086 24.4621 231.148 0 177.29 0C79.3756 0 0 79.3108 0 177.145V185.464C0 234.652 19.5558 281.826 54.3655 316.607Z"
+                                        fill="url(#about-heart-paint0_linear_1169_40)" />
+                                    <defs>
+                                        <linearGradient id="about-heart-paint0_linear_1169_40" x1="350" y1="0" x2="350"
+                                            y2="612" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <h3>Valorizar a vida</h3>
+                                <p>
+                                    Toda vida importa e merece cuidado, atenção e acolhimento.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about__card about__card--people">
+                            <div class="about__icon">
+                                <svg aria-hidden="true" focusable="false" width="799" height="748" viewBox="0 0 799 748"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M400.024 125.679C434.729 125.679 462.863 97.5447 462.863 62.8395C462.863 28.1342 434.729 0 400.024 0C365.319 0 337.185 28.1342 337.185 62.8395C337.185 97.5447 365.319 125.679 400.024 125.679Z"
+                                        fill="url(#about-people-paint0_linear_1166_5)" />
+                                    <path
+                                        d="M467.694 198.196C460.635 162.813 427.198 138.523 390.931 143.37C360.927 147.351 338.034 170.084 332.391 198.196C351.32 184.184 374.744 175.869 400.042 175.869C425.341 175.869 448.729 184.202 467.694 198.196Z"
+                                        fill="url(#about-people-paint1_linear_1166_5)" />
+                                    <path
+                                        d="M624.349 494.1C609.949 481.415 587.958 482.831 575.309 497.249L525.773 553.507C513.089 567.908 514.504 589.898 528.922 602.565C535.521 608.368 543.712 611.234 551.868 611.234C561.51 611.234 571.098 607.218 577.98 599.416L627.481 543.14C640.183 528.757 638.768 506.785 624.349 494.1Z"
+                                        fill="url(#about-people-paint2_linear_1166_5)" />
+                                    <path
+                                        d="M577.963 166.988C565.261 152.587 543.306 151.172 528.923 163.857C514.523 176.541 513.09 198.514 525.774 212.915L575.31 269.191C582.192 276.992 591.78 280.991 601.44 280.991C609.596 280.991 617.769 278.142 624.385 272.34C638.786 259.655 640.219 237.682 627.517 223.282L577.963 166.988Z"
+                                        fill="url(#about-people-paint3_linear_1166_5)" />
+                                    <path
+                                        d="M400.342 390.004C400.236 390.004 399.794 390.004 399.688 390.004C377.556 390.004 356.45 400.035 341.696 416.577C326.941 433.1 319.918 455.391 322.412 477.399L358.131 708.235C360.572 729.978 378.37 747.935 400.024 747.935C421.714 747.935 439.458 730.119 441.952 708.341L477.636 477.364C480.148 455.374 473.107 433.065 458.352 416.541C443.562 400.053 422.492 390.004 400.342 390.004Z"
+                                        fill="url(#about-people-paint4_linear_1166_5)" />
+                                    <path
+                                        d="M400.007 370.385C442.313 370.385 476.61 336.088 476.61 293.781C476.61 251.475 442.313 217.178 400.007 217.178C357.7 217.178 323.403 251.475 323.403 293.781C323.403 336.088 357.7 370.385 400.007 370.385Z"
+                                        fill="url(#about-people-paint5_linear_1166_5)" />
+                                    <path
+                                        d="M729.223 283.715C729.135 283.715 728.746 283.715 728.639 283.715C708.471 283.715 689.259 292.862 675.849 307.899C662.403 322.937 656.017 343.247 658.281 363.291L690.78 573.428C693.009 593.242 709.214 609.571 728.923 609.571C748.648 609.571 764.836 593.348 767.083 573.552L799.564 363.255C801.828 343.229 795.442 322.937 782.014 307.899C768.586 292.862 749.374 283.715 729.223 283.715Z"
+                                        fill="url(#about-people-paint6_linear_1166_5)" />
+                                    <path
+                                        d="M728.923 265.847C767.438 265.847 798.662 234.624 798.662 196.108C798.662 157.592 767.438 126.369 728.923 126.369C690.407 126.369 659.184 157.592 659.184 196.108C659.184 234.624 690.407 265.847 728.923 265.847Z"
+                                        fill="url(#about-people-paint7_linear_1166_5)" />
+                                    <path
+                                        d="M175.68 494.1C190.099 481.415 212.071 482.831 224.738 497.249L274.256 553.507C286.941 567.908 285.526 589.898 271.125 602.565C264.526 608.368 256.335 611.234 248.179 611.234C238.538 611.234 228.949 607.218 222.067 599.416L172.567 543.14C159.864 528.757 161.244 506.785 175.68 494.1Z"
+                                        fill="url(#about-people-paint8_linear_1166_5)" />
+                                    <path
+                                        d="M222.031 166.988C234.734 152.587 256.689 151.172 271.089 163.857C285.49 176.541 286.905 198.514 274.221 212.915L224.703 269.191C217.821 276.992 208.232 280.991 198.573 280.991C190.417 280.991 182.244 278.142 175.627 272.34C161.226 259.655 159.811 237.682 172.496 223.282L222.031 166.988Z"
+                                        fill="url(#about-people-paint9_linear_1166_5)" />
+                                    <path
+                                        d="M70.7888 283.715C70.8773 283.715 71.2842 283.715 71.3903 283.715C91.5407 283.715 110.753 292.862 124.181 307.899C137.626 322.937 144.013 343.247 141.749 363.291L109.232 573.428C107.003 593.242 90.7976 609.571 71.0896 609.571C51.3638 609.571 35.1762 593.348 32.9294 573.552L0.448238 363.255C-1.81625 343.229 4.57031 322.937 17.998 307.899C31.4257 292.862 50.6207 283.715 70.7888 283.715Z"
+                                        fill="url(#about-people-paint10_linear_1166_5)" />
+                                    <path
+                                        d="M71.1072 265.847C109.623 265.847 140.846 234.624 140.846 196.108C140.846 157.592 109.623 126.369 71.1072 126.369C32.5914 126.369 1.36816 157.592 1.36816 196.108C1.36816 234.624 32.5914 265.847 71.1072 265.847Z"
+                                        fill="url(#about-people-paint11_linear_1166_5)" />
+                                    <defs>
+                                        <linearGradient id="about-people-paint0_linear_1166_5" x1="400.024" y1="0"
+                                            x2="400.024" y2="125.679" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint1_linear_1166_5" x1="400.042" y1="142.755"
+                                            x2="400.042" y2="198.196" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint2_linear_1166_5" x1="576.634" y1="485.439"
+                                            x2="576.634" y2="611.234" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint3_linear_1166_5" x1="576.653" y1="155.194"
+                                            x2="576.653" y2="280.991" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint4_linear_1166_5" x1="400.027" y1="390.004"
+                                            x2="400.027" y2="747.935" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint5_linear_1166_5" x1="400.007" y1="217.178"
+                                            x2="400.007" y2="370.385" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint6_linear_1166_5" x1="728.923" y1="283.715"
+                                            x2="728.923" y2="609.571" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint7_linear_1166_5" x1="728.923" y1="126.369"
+                                            x2="728.923" y2="265.847" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint8_linear_1166_5" x1="223.398" y1="485.439"
+                                            x2="223.398" y2="611.234" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint9_linear_1166_5" x1="223.358" y1="155.194"
+                                            x2="223.358" y2="280.991" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint10_linear_1166_5" x1="71.0984"
+                                            y1="283.715" x2="71.0984" y2="609.571" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                        <linearGradient id="about-people-paint11_linear_1166_5" x1="71.1072"
+                                            y1="126.369" x2="71.1072" y2="265.847" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.0001" stop-color="#FFAA6B" />
+                                            <stop offset="0.475962" stop-color="#FFD477" />
+                                            <stop offset="0.802885" stop-color="#F9936F" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <h3>Ninguém precisa enfrentar sozinho</h3>
+                                <p>
+                                    Uma rede de apoio pode fazer diferença nos momentos difíceis.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about__card about__card--talk">
+                            <div class="about__icon">
+                                <svg aria-hidden="true" focusable="false" width="800" height="741" viewBox="0 0 800 741"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M401.773 0C162.447 0 0 122.022 0 311.85C0 428.638 48.5531 522.227 142.356 582.438C148.611 586.456 155.994 587.066 153.222 598.633C142.036 645.406 122.584 728.752 122.584 728.752C121.763 732.283 123.086 735.966 125.962 738.173C128.839 740.364 132.736 740.684 135.933 738.966C135.933 738.966 273.22 657.612 291.531 647.445C334.239 623.031 371.027 618.298 398.652 618.298C588.466 618.298 800 542.348 800 309.811C800 129.464 654.645 0 401.773 0ZM213.923 373.341C187.577 373.341 166.222 351.988 166.222 325.641C166.222 299.294 187.575 277.923 213.923 277.923C240.286 277.923 261.639 299.294 261.639 325.641C261.639 351.988 240.284 373.341 213.923 373.341ZM399.991 373.341C373.645 373.341 352.291 351.988 352.291 325.641C352.291 299.294 373.644 277.923 399.991 277.923C426.355 277.923 447.708 299.294 447.708 325.641C447.709 351.988 426.355 373.341 399.991 373.341ZM586.077 373.341C559.73 373.341 538.361 351.988 538.361 325.641C538.361 299.294 559.73 277.923 586.077 277.923C612.439 277.923 633.792 299.294 633.792 325.641C633.792 351.988 612.439 373.341 586.077 373.341Z"
+                                        fill="url(#about-talk-paint0_linear_1169_44)" />
+                                    <defs>
+                                        <linearGradient id="about-talk-paint0_linear_1169_44" x1="400" y1="0" x2="400"
+                                            y2="740.065" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#FFF0A8" />
+                                            <stop offset="0.28" stop-color="#FFAA6B" />
+                                            <stop offset="0.65" stop-color="#FFD477" />
+                                            <stop offset="0.83" stop-color="#F9936F" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <h3>Falar também é cuidar</h3>
+                                <p>
+                                    Conversar sem julgamentos pode abrir espaço para pedir ajuda.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 3. Orientação e caminhos reais de apoio. -->
+        <section class="section care" id="protecao" aria-labelledby="care-title" tabindex="-1">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <span class="eyebrow">O que fazer</span>
+                    <h2 class="section__title" id="care-title">O cuidado começa <br>com a escuta.</h2>
+                    <p class="section__text">Você não precisa ter todas as respostas para estar presente. Uma conversa
+                        respeitosa pode abrir caminho para buscar ajuda.</p>
+                </div>
+                <div class="care__grid">
+                    <ol class="care__steps" aria-label="Como acolher alguém">
+                        <li class="care__step" data-reveal>
+                            <span class="step-number" aria-hidden="true">01</span>
+                            <div>
+                                <h3>Abra espaço para conversar</h3>
+                                <p>Escolha um momento tranquilo. Pergunte como a pessoa está se sentindo e ouça, sem
+                                    interromper, comparar ou minimizar o que ela conta.</p>
+                            </div>
+                        </li>
+                        <li class="care__step" data-reveal>
+                            <span class="step-number" aria-hidden="true">02</span>
+                            <div>
+                                <h3>Ofereça ajuda concreta</h3>
+                                <p>Combine algo possível: fazer companhia, preparar uma refeição ou acompanhar uma
+                                    consulta. No pós-parto, dividir os cuidados também faz diferença.</p>
+                            </div>
+                        </li>
+                        <li class="care__step" data-reveal>
+                            <span class="step-number" aria-hidden="true">03</span>
+                            <div>
+                                <h3>Encontre apoio profissional</h3>
+                                <p>Uma Unidade Básica de Saúde (UBS) ou um Centro de Atenção Psicossocial (CAPS) pode
+                                    orientar a busca por cuidado. Ofereça-se para ir junto.</p>
+                            </div>
+                        </li>
+                    </ol>
+                    <aside class="support-panel" aria-labelledby="support-title" data-reveal>
+                        <span class="support-panel__label">Para conversar agora</span>
+                        <h3 id="support-title">Tem alguém <br>para te ouvir.</h3>
+                        <p>O CVV oferece apoio emocional gratuito e sigiloso pelo telefone, 24 horas por dia.</p>
+                        <a class="support-panel__phone" href="tel:188" aria-label="Ligar para o CVV, 188">188 <svg
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                aria-hidden="true">
+                                <path d="M7 17 17 7M7 7h10v10" />
+                            </svg></a>
+                        <a class="support-panel__chat" href="https://cvv.org.br/chat/" target="_blank"
+                            rel="noopener noreferrer">Prefere escrever? Acesse o chat do CVV <span
+                                aria-hidden="true">↗</span></a>
+                        <small>Consulte os horários do chat no site do CVV.</small>
+                        <div class="support-panel__urgent"><strong>Há perigo imediato?</strong>
+                            <p>Ligue <a href="tel:192">192 (SAMU)</a> ou procure uma emergência. Se estiver acompanhando
+                                alguém em risco, permaneça com a pessoa enquanto busca ajuda.</p>
+                        </div>
+                    </aside>
+                </div>
+                <p class="source-note">Orientações: <a
+                        href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/suicidio-prevencao"
+                        target="_blank" rel="noopener noreferrer">Ministério da Saúde</a> e <a
+                        href="https://cvv.org.br/" target="_blank" rel="noopener noreferrer">CVV</a>.</p>
+
+                <div class="maternal" data-reveal>
+                    <div class="maternal__intro">
+                        <span class="eyebrow">Saúde mental no pós-parto</span>
+                        <h3>Quem cuida <br>também precisa <br><span>de cuidado.</span></h3>
+                        <p>A depressão pós-parto é uma condição de saúde que merece acolhimento e tratamento. Você pode
+                            falar sobre o que está sentindo.</p>
+                        <a class="text-link"
+                            href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/depressao-pos-parto"
+                            target="_blank" rel="noopener noreferrer">Leia no Ministério da Saúde <span
+                                aria-hidden="true">↗</span></a>
+                    </div>
+                    <div class="faq">
+                        <details class="disclosure">
+                            <summary>Quando procurar ajuda?<span class="disclosure__mark" aria-hidden="true"></span>
+                            </summary>
+                            <div class="disclosure__body">
+                                <div>
+                                    <p>Se a tristeza, a falta de interesse, a ansiedade ou a culpa estão intensas ou
+                                        atrapalham a rotina, procure uma avaliação de saúde. Você não precisa esperar
+                                        que o sofrimento piore para pedir apoio.</p>
+                                </div>
+                            </div>
+                        </details>
+                        <details class="disclosure">
+                            <summary>Como a rede de apoio pode participar?<span class="disclosure__mark"
+                                    aria-hidden="true"></span></summary>
+                            <div class="disclosure__body">
+                                <div>
+                                    <p>Escute sem cobrar felicidade o tempo todo. Pergunte que ajuda seria bem-vinda,
+                                        divida tarefas e apoie o acompanhamento profissional. Inclua a mãe nas decisões
+                                        sobre seus cuidados e os do bebê.</p>
+                                </div>
+                            </div>
+                        </details>
+                        <details class="disclosure">
+                            <summary>A depressão pós-parto tem tratamento?<span class="disclosure__mark"
+                                    aria-hidden="true"></span></summary>
+                            <div class="disclosure__body">
+                                <div>
+                                    <p>Sim. O cuidado é individualizado e pode incluir psicoterapia e medicamentos,
+                                        conforme avaliação profissional. O SUS oferece acompanhamento. Procure uma UBS
+                                        para orientação.</p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Narrativas ilustrativas, sem atribuição a pessoas reais. -->
+        <section class="section stories" id="historias" aria-labelledby="stories-title" tabindex="-1">
+            <div class="container">
+                <div class="section-heading section-heading--split" data-reveal>
+                    <div><span class="eyebrow">Histórias</span>
+                        <h2 class="section__title" id="stories-title">Há muitas formas <br>de pedir acolhimento.</h2>
+                    </div>
+                    <p class="section__text">Cenas fictícias para abrir conversas sobre sentimentos, maternidade e
+                        apoio. Não são depoimentos de pessoas reais.</p>
+                </div>
+                <div class="stories__grid" data-stagger>
+                    <article class="story" data-reveal>
+                        <span class="story__category">Pós-parto</span><span class="story__quote"
+                            aria-hidden="true">“</span>
+                        <h3>Eu também <br>preciso de cuidado.</h3>
+                        <p>Entre visitas e perguntas sobre o bebê, Marina sentia falta de alguém que perguntasse como
+                            ela estava.</p>
+                        <details class="disclosure story__details">
+                            <summary>Continuar lendo<span class="disclosure__mark" aria-hidden="true"></span></summary>
+                            <div class="disclosure__body">
+                                <div>
+                                    <p>Quando uma amiga ofereceu companhia, Marina conseguiu dizer que os dias estavam
+                                        difíceis. Juntas, combinaram ajuda com a rotina e uma visita à unidade de saúde.
+                                        Ela não precisava explicar tudo de uma vez para começar a ser ouvida.</p><a
+                                        class="text-link" href="#protecao">Encontre caminhos de apoio <span
+                                            aria-hidden="true">↗</span></a>
+                                </div>
+                            </div>
+                        </details>
+                    </article>
+                    <article class="story" data-reveal>
+                        <span class="story__category">Rede de apoio</span><span class="story__quote"
+                            aria-hidden="true">“</span>
+                        <h3>Posso ficar <br>aqui com você?</h3>
+                        <p>Rafael queria ajudar a irmã, mas tinha medo de falar a coisa errada. Começou oferecendo tempo
+                            e escuta.</p>
+                        <details class="disclosure story__details">
+                            <summary>Continuar lendo<span class="disclosure__mark" aria-hidden="true"></span></summary>
+                            <div class="disclosure__body">
+                                <div>
+                                    <p>Em vez de dar conselhos imediatos, perguntou o que ela precisava naquele dia.
+                                        Assumiu algumas tarefas e se ofereceu para acompanhá-la a uma consulta. A
+                                        presença passou a fazer parte da rotina, respeitando o tempo dela.</p><a
+                                        class="text-link" href="#protecao">Veja como acolher <span
+                                            aria-hidden="true">↗</span></a>
+                                </div>
+                            </div>
+                        </details>
+                    </article>
+                    <article class="story" data-reveal>
+                        <span class="story__category">Primeira conversa</span><span class="story__quote"
+                            aria-hidden="true">“</span>
+                        <h3>Hoje eu consegui <br>falar um pouco.</h3>
+                        <p>Luiza ensaiou uma mensagem várias vezes. Não sabia por onde começar, mas decidiu procurar
+                            alguém de confiança.</p>
+                        <details class="disclosure story__details">
+                            <summary>Continuar lendo<span class="disclosure__mark" aria-hidden="true"></span></summary>
+                            <div class="disclosure__body">
+                                <div>
+                                    <p>A mensagem era simples: ela não estava bem e queria companhia. A conversa não
+                                        resolveu tudo naquele dia. Ainda assim, abriu espaço para dividir o que sentia e
+                                        pensar, com apoio, em buscar acompanhamento.</p><a class="text-link"
+                                        href="https://cvv.org.br/chat/" target="_blank"
+                                        rel="noopener noreferrer">Conheça o chat do CVV <span
+                                            aria-hidden="true">↗</span></a>
+                                </div>
+                            </div>
+                        </details>
+                    </article>
+                </div>
+                <p class="stories__closing" data-reveal>Cada pessoa tem seu tempo. <br><strong>Todo sentimento merece
+                        ser ouvido.</strong></p>
+            </div>
+        </section>
+
+        <!-- 5. Participação sem coleta de dados pessoais. -->
+        <section class="section participate" id="participe" aria-labelledby="participate-title" tabindex="-1">
+            <div class="container">
+                <div class="participate__invite" data-reveal>
+                    <div><span class="eyebrow">Participe</span>
+                        <h2 class="section__title" id="participate-title">O acolhimento <br>pode começar <br><span>com
+                                você.</span></h2>
+                        <p>Uma mensagem, uma escuta atenta, uma ajuda no dia a dia. Escolha uma forma de estar presente.
+                        </p>
+                    </div>
+                    <div class="message-card">
+                        <label for="support-message">Uma mensagem para abrir a conversa</label>
+                        <textarea id="support-message" readonly
+                            rows="5">Oi, lembrei de você. Como você está se sentindo de verdade? Se quiser conversar ou precisar de companhia, estou aqui para te ouvir, sem julgamentos.</textarea>
+                        <button class="btn btn--ink" id="copy-message" type="button" hidden>Copiar mensagem <svg
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                aria-hidden="true">
+                                <rect x="8" y="8" width="12" height="12" rx="2" />
+                                <path d="M16 8V4H4v12h4" />
+                            </svg></button>
+                        <p class="message-card__status" id="copy-status" role="status" aria-live="polite">Adapte a
+                            mensagem ao seu jeito de falar.</p>
+                    </div>
+                </div>
+                <div class="participate__paths" data-stagger>
+                    <article class="participate__path" data-reveal><span class="step-number"
+                            aria-hidden="true">01</span>
+                        <div>
+                            <h3>Compartilhe informação confiável</h3>
+                            <p>Ajude a desfazer dúvidas sobre saúde mental com materiais de fontes oficiais.</p><a
+                                class="text-link"
+                                href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/depressao-pos-parto"
+                                target="_blank" rel="noopener noreferrer">Conheça o material sobre pós-parto <span
+                                    aria-hidden="true">↗</span></a>
+                        </div>
+                    </article>
+                    <article class="participate__path" data-reveal><span class="step-number"
+                            aria-hidden="true">02</span>
+                        <div>
+                            <h3>Doe seu tempo para ouvir</h3>
+                            <p>Conheça o voluntariado do CVV e saiba como funciona a preparação para acolher outras
+                                pessoas.</p><a class="text-link" href="https://cvv.org.br/seja-voluntario/"
+                                target="_blank" rel="noopener noreferrer">Saiba como ser voluntário <span
+                                    aria-hidden="true">↗</span></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. footer -->
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <span class="logo">Pêssego<span class="logo__dot">.</span></span>
+                <p>Informação, acolhimento e prevenção pela vida — o ano inteiro.</p>
+                <p class="footer__note">Projeto educativo. O conteúdo orienta a busca por apoio e não substitui
+                    atendimento profissional.</p>
             </div>
 
-            <div>
-              <h3>Valorizar a vida</h3>
-              <p>
-                Toda vida importa e merece cuidado, atenção e acolhimento.
-              </p>
-            </div>
-          </div>
-
-          <div class="about__card about__card--people">
-            <div class="about__icon">
-              <img src="./Styles/Assents/people.svg" alt="">
+            <div class="footer__links">
+                <h4>Navegação</h4>
+                <a href="#sobre">Sobre</a>
+                <a href="#protecao">O que fazer</a>
+                <a href="#historias">Histórias</a>
+                <a href="#participe">Participe</a>
             </div>
 
-            <div>
-              <h3>Ninguém precisa enfrentar sozinho</h3>
-              <p>
-                Uma rede de apoio pode fazer diferença nos momentos difíceis.
-              </p>
-            </div>
-          </div>
+            <div class="footer__contact">
 
-          <div class="about__card about__card--talk">
-            <div class="about__icon">
-              <img src="./Styles/Assents/talk.svg" alt="">
+                <h4>Canais de apoio</h4>
+                <a href="tel:188">CVV: 188 · apoio emocional</a>
+                <a href="tel:192">SAMU: 192 · emergências</a>
+                <a href="https://cvv.org.br/" target="_blank" rel="noopener noreferrer">Conheça o CVV <span
+                        aria-hidden="true">↗</span></a>
             </div>
-
-            <div>
-              <h3>Falar também é cuidar</h3>
-              <p>
-                Conversar sem julgamentos pode abrir espaço para pedir ajuda.
-              </p>
-            </div>
-          </div>
-
         </div>
+        <div class="container footer__bottom">
+            <p>&copy; <span id="year">2026</span> Pêssego. Todos os direitos reservados.</p>
+            <a href="#topo">Voltar ao topo <span aria-hidden="true">↑</span></a>
+        </div>
+    </footer>
 
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- 3. o que fazer -->
-  <section class="section" id="protecao">
-    <div class="container">
-      <h2 class="section__title">O que fazer</h2>
-      <p class="section__text">Se você ou alguém próximo está passando por um momento difícil, não espere. Ouça sem
-        julgamentos, leve o assunto a sério e ajude a pessoa a buscar apoio profissional. Em caso de emergência, ligue
-        188 (CVV) ou procure o serviço de saúde mais próximo.</p>
-    </div>
-
-  </section>
-
-  <!-- 4. histórias -->
-  <section class="section" id="historias">
-    <div class="container">
-      <h2 class="section__title">Histórias</h2>
-      <p class="section__text">Relatos reais de superação e cuidado que mostram que pedir ajuda é um ato de coragem — e
-        que é sempre possível encontrar um caminho, mesmo nos dias mais difíceis.</p>
-    </div>
-  </section>
-
-
-  <!-- 5. participe -->
-  <section class="section" id="participe">
-    <div class="container">
-      <h2 class="section__title">Participe</h2>
-      <p class="section__text">Você pode fazer parte dessa rede: compartilhe informações confiáveis, apoie campanhas
-        locais de prevenção ou seja voluntário em iniciativas de saúde mental na sua região.</p>
-    </div>
-  </section>
-
-  <!-- 6. footer -->
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <span class="logo">Pêssego<span class="logo__dot">.</span></span>
-        <p>Informação, acolhimento e prevenção pela vida — o ano inteiro.</p>
-      </div>
-
-      <div class="footer__links">
-        <h4>Navegação</h4>
-        <a href="#sobre">Sobre</a>
-        <a href="#protecao">O que fazer</a>
-        <a href="#historias">Histórias</a>
-        <a href="#participe">Participe</a>
-      </div>
-
-      <div class="footer__contact">
-
-        <h4>Precisa de ajuda?</h4>
-        <a href="tel:188">Ligue: 188</a>
-        <a href="#">cvv.org.br</a>
-      </div>
-    </div>
-    <div class="container footer__bottom">
-      <p>&copy; <span id="year"></span> Pêssego. Todos os direitos reservados.</p>
-    </div>
-  </footer>
-
-  <script src="./Script/Script.js" defer></script>
+    <script src="./Script/Script.js" defer></script>
 </body>
 
 </html>
