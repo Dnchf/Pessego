@@ -1,57 +1,430 @@
-# Pêssego — site completo
+<div align="center">
 
-Site educativo sobre acolhimento, Setembro Amarelo e saúde mental no pós-parto. HTML, CSS e JavaScript, sem instalação ou compilação.
+🍑 Pêssego
 
-## Como abrir
+Falar é o primeiro passo para salvar vidas.
 
-Extraia o ZIP e abra `Pessego/index.html`. Para publicar, envie o conteúdo da pasta Pessego para um serviço de hospedagem estática, preservando os nomes e caminhos dos arquivos. As fontes usam o Google Fonts; sem internet, o navegador utiliza as fontes alternativas.
+Um site educativo sobre acolhimento, prevenção, saúde mental e valorização da vida, com foco especial na saúde mental no pós-parto.
 
-## O que foi concluído
+<br>
 
-- **Sobre:** apresentação do projeto com os três SVGs originais.
-- **O que fazer:** passos de acolhimento, caminhos para buscar atendimento e painel com CVV 188, chat oficial e SAMU 192 para emergências.
-- **Pós-parto:** perguntas expansíveis sobre busca de ajuda, rede de apoio e tratamento, com referência ao Ministério da Saúde.
-- **Histórias:** três narrativas fictícias, identificadas como ilustrativas, com leitura expansível.
-- **Participe:** mensagem de apoio selecionável e copiável, materiais oficiais e link de voluntariado do CVV. O botão copia o texto; o visitante decide onde e para quem enviá-lo.
-- **Footer:** canais de apoio, links funcionais e retorno ao topo.
-- Favicon criado a partir do SVG original do pêssego.
+<img src="./assets/screenshots/hero.png" alt="Preview do site Pêssego" width="900">
 
-## Animações e responsividade
+<br><br>
 
-- Entrada suave do hero e revelação das seções durante a rolagem.
-- Pequeno intervalo entre a entrada dos cards.
-- Abertura e fechamento animados das perguntas e histórias; novas ações podem interromper a animação anterior.
-- Menu mobile deslizante com fundo de apoio, fechamento por Escape ou clique externo e bloqueio da rolagem da página enquanto aberto.
-- Indicação da seção atual no menu e rolagem suave entre âncoras.
-- Tipografia fluida, grades que se reorganizam e campo de mensagem que adapta a altura ao conteúdo.
-- Movimento reduzido respeitado tanto nas animações CSS quanto nas interações JavaScript.
 
-## Temas e acessibilidade
 
-O botão sol/lua funciona por clique, Enter ou Espaço e expõe `aria-pressed`. A escolha é salva em `localStorage`, na chave `pessego-theme`, e aplicada antes do CSS na recarga. Sem escolha explícita, o site acompanha `prefers-color-scheme`.
 
-Para voltar à preferência do sistema, execute `localStorage.removeItem('pessego-theme')` no console e recarregue.
 
-O site inclui link para pular ao conteúdo, foco visível, navegação móvel fechada fora da sequência de Tab, controles nativos e aviso acessível após copiar. Sem JavaScript, carrega no modo claro, mantém a navegação e permite abrir perguntas e histórias com o elemento nativo `details`.
 
-## Validação desta versão — 11/09/2026
+</div>
 
-- Inspeção visual em Chromium: desktop e mobile; larguras de 390, 320 e 901 px verificadas sem rolagem horizontal.
-- Navegação por âncoras, indicação da seção atual, abertura/fechamento de perguntas e histórias, tema claro/escuro, menu mobile e Escape.
-- Teste controlado com 20 cliques rápidos na pergunta: estado final correto, sem altura ou recorte presos após a animação.
-- Cenário de movimento reduzido simulado: sem conteúdo pendente de revelação, animação do hero desativada e transições com duração zero; perguntas continuam funcionando.
-- Cenário com execução de scripts bloqueada por CSP: conteúdo visível, tema claro, navegação disponível e perguntas funcionando nativamente a 320 px.
-- Mensagem em tela pequena: altura ajustada ao texto, sem rolagem interna necessária.
-- Contraste calculado nos principais pares novos de texto/fundo: superior a 4,5:1. Sintaxe JavaScript, referências locais, âncoras, IDs e favicon SVG verificados.
+🌻 Sobre o projeto
 
-Limites: as simulações não substituem testes em dispositivos físicos e outros navegadores. Não foi executada auditoria completa com axe ou Lighthouse. Na cópia, foi confirmado o retorno de sucesso do navegador; a colagem não pôde ser verificada pela área de transferência virtual da automação.
+O Pêssego nasceu como um projeto de conscientização para o Setembro Amarelo, utilizando tecnologia e design para transformar informações importantes em uma experiência simples, acolhedora e acessível.
 
-## Fontes do conteúdo
+A proposta é criar um espaço onde o visitante possa encontrar informação, acolhimento, orientações práticas e caminhos para buscar ajuda, especialmente em momentos relacionados à saúde mental e ao pós-parto.
 
-Consultadas em 11/09/2026 e também vinculadas nas seções correspondentes:
+💛 Você não precisa passar por tudo sozinho. Falar pode ser o começo.
 
-- [Ministério da Saúde — depressão pós-parto](https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/depressao-pos-parto)
-- [Ministério da Saúde — prevenção do suicídio](https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/suicidio-prevencao)
-- [CVV](https://cvv.org.br/), [chat](https://cvv.org.br/chat/) e [voluntariado](https://cvv.org.br/seja-voluntario/)
+✨ Experiência visual
 
-As histórias são criações educativas, sem atribuição a pessoas reais. O projeto não oferece diagnóstico nem atendimento clínico.
+O projeto foi pensado para fugir de uma abordagem pesada e utilizar uma identidade visual mais leve, acolhedora e moderna.
+
+A identidade combina:
+
+🍑 Tons de pêssego e laranja
+
+💛 Elementos associados ao Setembro Amarelo
+
+✨ Ilustrações e formas orgânicas
+
+🎨 Gradientes suaves
+
+🧩 Cards e seções interativas
+
+📱 Layout responsivo
+
+🌙 Suporte a tema claro e escuro
+
+📸 Galeria do projeto
+
+<table>
+<tr>
+<td width="50%" align="center">
+
+<b>Hero / Página inicial</b>
+
+<br><br>
+
+<img src="./assets/screenshots/hero.png" alt="Hero do Pêssego" width="100%">
+
+</td>
+
+<td width="50%" align="center">
+
+<b>Seção Sobre</b>
+
+<br><br>
+
+<img src="./assets/screenshots/sobre.png" alt="Seção Sobre do Pêssego" width="100%">
+
+</td>
+</tr>
+
+<tr>
+<td width="50%" align="center">
+
+<b>Seção de acolhimento</b>
+
+<br><br>
+
+<img src="./assets/screenshots/acolhimento.png" alt="Seção de acolhimento do Pêssego" width="100%">
+
+</td>
+
+<td width="50%" align="center">
+
+<b>Versão mobile</b>
+
+<br><br>
+
+<img src="./assets/screenshots/mobile.png" alt="Versão mobile do Pêssego" width="100%">
+
+</td>
+</tr>
+</table>
+
+💡 Dica: coloque suas imagens na pasta assets/screenshots/ usando os nomes hero.png, sobre.png, acolhimento.png e mobile.png. Você pode trocar os nomes no README caso prefira.
+
+🧭 Estrutura do site
+
+🏠 Início
+
+O Hero apresenta a proposta do projeto com a mensagem:
+
+“Falar é o primeiro passo para salvar vidas”
+
+Também possui chamadas para conhecer o projeto e participar.
+
+💛 Sobre
+
+Apresentação do propósito do Pêssego, utilizando as ilustrações desenvolvidas especialmente para a identidade visual do projeto.
+
+🤝 O que fazer
+
+Uma área prática com orientações sobre acolhimento e busca de ajuda, incluindo caminhos para atendimento e canais importantes.
+
+Entre os recursos apresentados estão:
+
+CVV — 188
+
+Chat oficial do CVV
+
+SAMU — 192 em situações de emergência
+
+Orientações para oferecer apoio
+
+Informações sobre rede de suporte
+
+🌻 Pós-parto
+
+Conteúdo educativo apresentado de forma interativa, abordando temas como:
+
+Quando procurar ajuda
+
+A importância da rede de apoio
+
+Possibilidades de tratamento
+
+Saúde mental durante o pós-parto
+
+📖 Histórias
+
+Narrativas fictícias utilizadas como recurso educativo para aproximar o visitante de situações que podem acontecer no dia a dia.
+
+As histórias são identificadas como ilustrativas e não representam pessoas reais.
+
+💌 Participe
+
+Área voltada para incentivar atitudes de apoio, com:
+
+Mensagem de acolhimento selecionável
+
+Botão para copiar a mensagem
+
+Materiais oficiais
+
+Informações sobre voluntariado do CVV
+
+🔗 Footer
+
+Rodapé com canais de apoio, links úteis e acesso rápido ao topo da página.
+
+⚙️ Interações e funcionalidades
+
+O Pêssego não é apenas uma página estática. O JavaScript foi utilizado para criar uma experiência mais dinâmica.
+
+Recurso
+
+Descrição
+
+🌙 Tema claro/escuro
+
+Alternância entre os temas com preferência salva
+
+📱 Menu mobile
+
+Navegação adaptada para telas menores
+
+✨ Reveal
+
+Elementos aparecem suavemente durante a rolagem
+
+📖 Histórias expansíveis
+
+Conteúdo pode ser aberto e fechado
+
+❓ Perguntas expansíveis
+
+Informações organizadas em blocos interativos
+
+📋 Copiar mensagem
+
+Mensagem de apoio pode ser copiada
+
+⬆️ Voltar ao topo
+
+Navegação rápida entre as seções
+
+🔗 Navegação por âncoras
+
+Rolagem suave entre as áreas do site
+
+⌨️ Acessibilidade
+
+Suporte a teclado, foco visível e Escape
+
+🧑‍💻 Tecnologias utilizadas
+
+Front-end
+
+HTML5
+
+Estrutura semântica
+
+Elementos nativos
+
+Organização por seções
+
+CSS3
+
+Flexbox
+
+Grid
+
+Variáveis CSS
+
+Gradientes
+
+Animações
+
+Media queries
+
+Design responsivo
+
+JavaScript
+
+Manipulação do DOM
+
+Eventos
+
+Animações
+
+Menu mobile
+
+Tema
+
+localStorage
+
+Interações dos componentes
+
+🎨 Design
+
+A identidade visual foi desenvolvida com foco em:
+
+Acolhimento → Informação → Prevenção → Ação
+
+A paleta utiliza principalmente tons de:
+
+#FFB37C · #FFD9B3 · #FFC93C · #FFF2E4 · #FFFAF5
+
+♿ Acessibilidade
+
+A acessibilidade foi considerada durante o desenvolvimento para tornar o conteúdo mais fácil de navegar e compreender.
+
+Entre os recursos:
+
+Link para pular diretamente ao conteúdo
+
+Foco visível
+
+Navegação por teclado
+
+Uso de elementos HTML nativos
+
+Atributos ARIA quando necessários
+
+Menu mobile com suporte a Escape
+
+Respeito à preferência de movimento reduzido
+
+Contraste adequado nos principais elementos
+
+Funcionamento básico mesmo sem JavaScript
+
+📱 Responsividade
+
+O layout foi desenvolvido para funcionar em diferentes tamanhos de tela.
+
+Desktop
+   ↓
+Tablet
+   ↓
+Mobile
+
+O conteúdo se reorganiza utilizando CSS Grid, Flexbox e Media Queries, evitando rolagem horizontal e mantendo a experiência consistente.
+
+🚀 Como executar
+
+Não é necessário instalar dependências ou utilizar um processo de compilação.
+
+1. Clone o repositório
+
+git clone https://github.com/Dnchf/Pessego.git
+
+2. Entre na pasta
+
+cd Pessego
+
+3. Abra o projeto
+
+Abra o arquivo:
+
+index.html
+
+Também é possível utilizar o Live Server no Visual Studio Code para uma experiência de desenvolvimento mais prática.
+
+📁 Organização dos arquivos
+
+Pessego/
+│
+├── index.html
+│
+├── Styles/
+│   └── Style.css
+│
+├── Scripts/
+│   └── script.js
+│
+├── Assets/
+│   ├── images/
+│   ├── icons/
+│   └── svg/
+│
+└── assets/
+    └── screenshots/
+        ├── hero.png
+        ├── sobre.png
+        ├── acolhimento.png
+        └── mobile.png
+
+A estrutura acima é uma referência visual. Ajuste os nomes das pastas conforme a estrutura real do seu repositório.
+
+🧪 Validação
+
+Última validação: 11/09/2026
+
+Foram considerados testes de:
+
+Visualização em desktop e mobile
+
+Larguras de 390, 320 e 901 px
+
+Navegação por âncoras
+
+Menu mobile
+
+Tecla Escape
+
+Tema claro/escuro
+
+Perguntas e histórias expansíveis
+
+Animações
+
+Movimento reduzido
+
+Funcionamento sem JavaScript
+
+Contraste dos principais elementos
+
+Links, IDs e referências locais
+
+Observação: esses testes não substituem uma auditoria completa em dispositivos físicos, navegadores diferentes ou ferramentas como Lighthouse e axe.
+
+📚 Fontes e responsabilidade
+
+O conteúdo educativo foi desenvolvido com base em fontes oficiais, principalmente:
+
+Ministério da Saúde — Depressão Pós-Parto
+
+Ministério da Saúde — Prevenção do Suicídio
+
+CVV
+
+CVV — Chat
+
+CVV — Voluntariado
+
+O Pêssego é um projeto educativo e de conscientização. Não oferece diagnóstico, tratamento ou atendimento clínico.
+
+As histórias apresentadas no site são fictícias e ilustrativas.
+
+🎯 Objetivos do projeto
+
+Informar
+   ↓
+Acolher
+   ↓
+Conscientizar
+   ↓
+Orientar
+   ↓
+Incentivar a busca por ajuda
+
+O objetivo é mostrar como o desenvolvimento web pode ser utilizado não apenas para criar interfaces bonitas, mas também para comunicar, educar e gerar impacto social.
+
+👨‍💻 Desenvolvido por
+
+<div align="center">
+
+Danilo Chagas
+
+Análise e Desenvolvimento de Sistemas
+
+Desenvolvido com 💛, código e propósito.
+
+<br>
+
+
+
+</div>
+
+<div align="center">
+
+🍑 Pêssego
+
+Falar é o primeiro passo para salvar vidas.
+
+</div>
