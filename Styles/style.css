@@ -36,6 +36,41 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
   --transition: 0.35s cubic-bezier(.4,0,.2,1);
 
   --peach-size: clamp(360px, 36vw, 680px);
+
+
+  --color-footer: #241b16;
+
+
+  --icon-hue-rotate: 18deg;
+}
+
+/* ---------- 2b. MODO NOTURNO ---------- */
+[data-theme="dark"] {
+
+  --color-peach: #26386b;
+  --color-peach-light: #1c2b52;
+
+  --color-yellow: #ffd93c;
+  --color-yellow-dark: #ffb400;
+
+
+  --color-bg: #17110d;
+  --color-bg-alt: #1f1712;
+
+
+  --color-dark: #f5ede1;
+  --color-dark-soft: #ece0d1;
+  --color-text: #e7dbcb;
+  --color-text-muted: #b3a493;
+
+  --color-footer: #0d0a08;
+
+  --gradient-hero: linear-gradient(135deg, #16244a 0%, #1b2c58 25%, #24386c 50%, #16244a 75%, #0c1730 100%);
+
+  --gradient-btn: linear-gradient(135deg, #FFE9A8 0%, #FFC443 28%, #FFD477 65%, #FFB800 83%);
+
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-strong: 0 20px 45px rgba(0, 0, 0, 0.6);
 }
 
 /* ---------- 3. BASE ---------- */
@@ -92,6 +127,9 @@ body {
   padding: 12px 0;
   box-shadow: var(--shadow-soft);
 }
+[data-theme="dark"] .header.scrolled {
+  background: rgba(23, 17, 13, 0.85);
+}
 .header__inner {
   display: flex;
   align-items: center;
@@ -131,6 +169,36 @@ body {
   white-space: nowrap;
 }
 
+/* ---------- BOTÃO MODO NOTURNO ---------- */
+.theme-toggle {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--color-white);
+  transition: color var(--transition), background var(--transition);
+}
+.header.scrolled .theme-toggle { color: var(--color-dark); }
+.theme-toggle:hover { background: rgba(255, 255, 255, 0.15); }
+.header.scrolled .theme-toggle:hover { background: rgba(58, 44, 34, 0.08); }
+[data-theme="dark"] .header.scrolled .theme-toggle:hover { background: rgba(255, 255, 255, 0.08); }
+
+.theme-toggle__icon {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(.4,0,.2,1);
+}
+.theme-toggle__icon--sun { opacity: 1; transform: rotate(0deg) scale(1); }
+.theme-toggle__icon--moon { opacity: 0; transform: rotate(-60deg) scale(0.5); }
+
+[data-theme="dark"] .theme-toggle__icon--sun { opacity: 0; transform: rotate(60deg) scale(0.5); }
+[data-theme="dark"] .theme-toggle__icon--moon { opacity: 1; transform: rotate(0deg) scale(1); }
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -161,7 +229,7 @@ body {
   inset: 0;
   background: var(--gradient-hero);
   background-size: 200% 200%;
-  animation: heroShift 14s ease-in-out infinite;
+ 
   z-index: -1;
 }
 @keyframes heroShift {
@@ -295,6 +363,7 @@ body {
     z-index: 90;
   }
   .nav.active { transform: translateX(0); }
+  [data-theme="dark"] .nav { background: var(--color-bg-alt); }
   .nav__list { flex-direction: column; gap: 22px; }
   .nav__link { color: var(--color-dark); }
   .header__cta { display: none; }
@@ -447,6 +516,11 @@ body {
   box-shadow: var(--shadow-strong);
 }
 
+[data-theme="dark"] .about__card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
 
 /* ---------- ÍCONE ---------- */
 
@@ -473,6 +547,11 @@ body {
 
 .about__card:hover .about__icon img {
   transform: scale(1.08) rotate(-3deg);
+}
+
+/* no modo escuro, os ícones (mesma paleta laranja/pêssego) viram dourados */
+[data-theme="dark"] .about__icon img {
+  filter: hue-rotate(var(--icon-hue-rotate)) saturate(1.3) brightness(1.08);
 }
 
 
@@ -557,39 +636,9 @@ body {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 /* 3. FOOTER */
 .footer {
-  background: var(--color-dark);
+  background: var(--color-footer);
   color: rgba(255,255,255,0.75);
   padding: 70px 0 24px;
 }
@@ -616,19 +665,16 @@ body {
   .footer__inner { grid-template-columns: 1fr; }
 }
 
-/* 4. ANIMAÇÃO DO SVG DO HERO */
-/* O pêssego (corpo principal) permanece parado e ganha uma leve animação de cor. */
-.svg-peach {
-  animation: peachColorShift 9s ease-in-out infinite;
-}
-@keyframes peachColorShift {
-  0%, 100% { filter: hue-rotate(0deg) saturate(100%); }
-  50% { filter: hue-rotate(18deg) saturate(115%); }
-}
+
 
 /* Os elementos decorativos ao redor reagem ao movimento do mouse. */
 .svg-deco {
   transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
   transform-box: view-box;
   will-change: transform;
+}
+
+/* no modo escuro, o pêssego (tons laranja/pêssego) vira dourado */
+[data-theme="dark"] #svgDeco {
+  filter: hue-rotate(var(--icon-hue-rotate)) saturate(1.3) brightness(1.08);
 }

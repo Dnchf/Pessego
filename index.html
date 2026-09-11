@@ -12,6 +12,15 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./Styles/Style.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('pessego-theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
 <body>
@@ -32,6 +41,23 @@
 
       <a href="tel:188" class="btn btn--ghost header__cta">Precisa de ajuda? Ligue 188</a>
 
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar modo escuro" aria-pressed="false">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="12" y1="2" x2="12" y2="4"></line>
+          <line x1="12" y1="20" x2="12" y2="22"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="2" y1="12" x2="4" y2="12"></line>
+          <line x1="20" y1="12" x2="22" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
       <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -51,7 +77,7 @@
         O Pêssego é um espaço de acolhimento, informação e prevenção. Aqui você encontra histórias reais, orientações
         práticas e uma rede de apoio para cuidar da sua saúde mental e da de quem você ama.
       </p>
-      <svg width="1668" height="1364" viewBox="0 0 1668 1364" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg id="svgDeco" class="svg-deco" width="1668" height="1364" viewBox="0 0 1668 1364" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_0_1)">
           <path
             d="M1082.87 413.624C1082.87 413.624 1136.1 371.514 1165.68 341.4C1202.11 304.309 1212.98 265.433 1200.28 260.839C1187.57 256.245 1138.36 265.433 1138.36 265.433L990.95 338.592L953.598 395.079L1082.87 413.624Z"
@@ -63,7 +89,7 @@
             d="M1092.9 253.352C1184.82 249.694 1200.28 260.754 1200.28 260.754C1200.28 260.754 1131.09 294.101 1064.65 325.577C998.304 357.013 944.624 398.632 944.49 398.736L841.57 478.088C828.669 468.467 819.612 463.478 817.417 462.477C806.534 457.598 790.741 457.598 802.852 471.079C805.178 473.669 812.029 481.374 821.451 493.6L802.601 508.135L609.653 361.731C609.497 361.652 542.238 327.423 486.816 306.18C431.331 284.913 363.06 269.09 363.06 269.09C363.06 269.09 376.513 251.566 503.194 257.946C630.628 264.411 677.924 296.824 716.112 320.047C754.301 343.271 790.734 396.95 790.734 396.95C790.734 396.95 826.248 324.726 883.572 294.101C940.896 263.476 1000.98 257.01 1092.9 253.352Z"
             fill="url(#paint2_linear_0_1)" />
         </g>
-        <g filter="url(#filter1_d_0_1)">
+        <g filter="url(#filter1_d_0_1)" class="svg-peach">
           <path
             d="M799.518 437.896C820.408 436.024 866.201 371.372 991.294 381.665C1116.39 391.873 1307.24 536.492 1255.85 807.693C1227.94 955.203 1152.57 1050.31 1013.27 1153.41C914.834 1226.23 814.643 1272.51 768.349 1273.19C726.651 1273.87 669.159 1180.98 669.159 1180.98L799.518 437.896ZM817.417 462.477C806.534 457.598 790.741 457.599 802.852 471.079C814.962 484.559 949.653 636.567 931.405 843.819C915.121 1029.24 842.867 1171.16 817.336 1203.08C791.969 1234.92 776.258 1248.65 786.486 1251.62C790.007 1252.62 823.965 1236.08 845.321 1209.2C902.684 1136.83 975.511 1036.27 988.44 849.939C1007.83 570.405 828.3 467.44 817.417 462.477Z"
             fill="url(#paint3_linear_0_1)" />

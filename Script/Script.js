@@ -27,6 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* 2b. modo noturno */
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+
+  const applyTheme = (theme) => {
+    root.setAttribute('data-theme', theme);
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', theme === 'dark');
+  };
+
+  // o tema inicial já foi aplicado por um script inline no <head> (evita "flash").
+  // aqui só garantimos o estado correto do botão e ligamos o clique.
+  applyTheme(root.getAttribute('data-theme') || 'light');
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      try { localStorage.setItem('pessego-theme', nextTheme); } catch (e) {}
+    });
+  }
+
   /* -3. scroll reveal */
   const revealEls = document.querySelectorAll('[data-reveal]');
 
