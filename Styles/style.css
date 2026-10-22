@@ -372,9 +372,12 @@ button {
 }
 .hero__tag {
   display: inline-block;
-  color: var(--hero-text);
-  font-weight: 600;
-  font-size: 0.9rem;
+  background-image: linear-gradient(to bottom, #ffff9d, #feeb64);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  font-size: 3.5rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 18px;
@@ -382,8 +385,8 @@ button {
 .hero__title_reveal {
   max-width: 54%;
   font-family: var(--font-title);
-  font-size: clamp(2.4rem, 4.6vw, 4rem);
-  font-weight: 800;
+  font-size: clamp(1.4rem, 2.0vw, 1.8rem);
+  font-weight: 100;
   color: var(--hero-text);
   line-height: 1.15;
   margin-bottom: 20px;
@@ -513,7 +516,7 @@ button {
   position: relative;
 }
 .about__header {
-  max-width: 760px;
+  max-width: 920px;
   margin-bottom: 36px;
 }
 .about__header .eyebrow {
@@ -537,7 +540,7 @@ button {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: 70px;
-  align-items: center;
+  align-items: start;
 }
 .about__text {
   max-width: 470px;
