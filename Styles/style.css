@@ -148,6 +148,17 @@ body {
   outline: 3px solid var(--focus-color);
   outline-offset: 5px;
 }
+.span {
+     display: inline-block;
+  background-image: linear-gradient(to bottom, #ffff9d, #feeb64);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
 a,
 button {
   -webkit-tap-highlight-color: transparent;
